@@ -36,10 +36,10 @@ def draw_left(x, y, b, h):
         draw_character(x + b, move)
     pass
 
-def draw_bottom():
+def draw_bottom(x, y, b):
     print('bottom')
-    for x in range(750, 50, -5):
-        draw_character(x, 50)
+    for move in range(x + b, x, -5):
+        draw_character(move, y)
     pass
 
 def draw_right():
@@ -52,7 +52,7 @@ def move_rectangle(x, y , b, h):
     print('rectangle')
     draw_top(x, y, b, h)
     draw_left(x, y, b, h)
-    draw_bottom()
+    draw_bottom(x, y, b)
     draw_right()
 
 def draw_triangle_bottom():
