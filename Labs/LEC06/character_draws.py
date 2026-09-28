@@ -12,11 +12,8 @@ def move_circle(x, y, r):
     print('circle')
     #캐릭터 이미지 표시
     for i in range(0, 360):
-        x = 400
-        y = 300
-        r = 200
-        draw_character(x + 200 * cos(radians(i))
-                       ,y + 200 * sin(radians(i)))
+        draw_character(x + r * cos(radians(i))
+                       ,y + r * sin(radians(i)))
     update_canvas()
     pass
 
