@@ -48,7 +48,7 @@ def draw_right():
         draw_character(50, y)
     pass
 
-def move_rectangle():
+def move_rectangle(x, y , b, h):
     print('rectangle')
     draw_top()
     draw_left()
@@ -83,11 +83,8 @@ def move_triangle():
     pass
 
 while True:
-    x = 400
-    y = 300
-    r = 200
-    move_circle(x, y, r)
-    move_rectangle()
+    move_circle(400, 300, 200)
+    move_rectangle(50, 50 , 700 , 500)
     move_triangle()
     pass
 
