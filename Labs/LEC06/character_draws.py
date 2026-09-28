@@ -71,10 +71,11 @@ def draw_triangle_right_up():
 
 def draw_triangle_left_down():
     print('triangle_left_down')
-    lenth = 300
+    rate = 4 / 3
+    h = 400
     for x in range(400, 100, -5):
-        lenth -= 5
-        draw_character(x, 50 + lenth * tan(radians(45)))
+        h -= 5 * rate 
+        draw_character(x, 100 + h)
 
 def move_triangle(x, y, b, h):
     print('triangle')
