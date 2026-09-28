@@ -85,8 +85,8 @@ def move_triangle(x, y, b, h):
     pass
 
 while True:
-    #move_circle(400, 300, 200)
-    #move_rectangle(50, 50 , 700 , 500)
+    move_circle(400, 300, 200)
+    move_rectangle(50, 50 , 700 , 500)
     move_triangle(100, 100 , 600, 400)
     pass
 
