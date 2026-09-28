@@ -64,6 +64,8 @@ def draw_triangle_bottom():
 
 def draw_triangle_right_up():
     print('triangle_right_up')
+    for x in range(700, 300, -5):
+        draw_character(x, 50)
 
 def draw_triangle_left_down():
     print('triangle_left_down')
