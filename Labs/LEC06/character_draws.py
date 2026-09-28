@@ -8,71 +8,55 @@ character = load_image('character.png')
 
 
 def move_circle():
-    x = 400
-    y = 300
+   
     print('circle')
     #캐릭터 이미지 표시
     for i in range(0, 360):
-        clear_canvas()
-        character.draw(x + 200 * cos(radians(i))
+        x = 400
+        y = 300
+        draw_character(x + 200 * cos(radians(i))
                        ,y + 200 * sin(radians(i)))
-        update_canvas()
-        delay(0.01)
     update_canvas()
     pass
 
-def draw_top(x, y):
-    for i in range(0, 200):
-        clear_canvas()
-        y += i
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
-    update_canvas()
 
-def draw_left(x, y):
-    for i in range(0, 200):
-        clear_canvas()
-        x -= i
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
-    update_canvas()
+def draw_top():
+    print('top')
+    for x in range(50, 750, 5):
+        draw_character(x, 550)
+    pass
 
-def draw_bottom(x, y):
-    for i in range(0, 200):
-        clear_canvas()
-        y -= i
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
+def draw_character(x, y):
+    clear_canvas()
+    character.draw(x, y)
     update_canvas()
+    delay(0.01)
 
-def draw_right(x, y):
-    for i in range(0, 200):
-        clear_canvas()
-        x += i
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
-    update_canvas()
+def draw_left():
+    print('left')
+    pass
+
+def draw_bottom():
+    print('bottom')
+    pass
+
+def draw_right():
+    print('right')
+    pass
 
 def move_rectangle():
     print('rectangle')
-    x = 400
-    y = 300
-    draw_top(x, y)
-    draw_left(x, y)
-    draw_bottom(x, y)
-    draw_right(x, y)
-    direction = ((0, 1), (0, -1), (-1, 0), (1, 0))
+    draw_top()
+    draw_left()
+    draw_bottom()
+    draw_right()
 
 def move_triangle():
     print('triangle')
     pass
 
 while True:
-    move_circle()
+    #move_circle()
     move_rectangle()
     move_triangle()
     pass
