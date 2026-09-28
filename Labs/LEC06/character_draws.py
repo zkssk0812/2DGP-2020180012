@@ -62,10 +62,11 @@ def draw_triangle_bottom(x, y, b):
 
 def draw_triangle_right_up():
     print('triangle_right_up')
-    lenth = 0
+    rate = 4 / 3
+    h = 0
     for x in range(700, 400, -5):
-        lenth += 5
-        draw_character(x, (50 + lenth * tan(radians(45))))
+        h += 5 * rate
+        draw_character(x, 100 + h)
 
 
 def draw_triangle_left_down():
