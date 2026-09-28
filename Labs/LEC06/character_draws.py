@@ -7,13 +7,14 @@ open_canvas(800, 600)
 character = load_image('character.png')
 
 
-def move_circle():
+def move_circle(x, y, r):
    
     print('circle')
     #캐릭터 이미지 표시
     for i in range(0, 360):
         x = 400
         y = 300
+        r = 200
         draw_character(x + 200 * cos(radians(i))
                        ,y + 200 * sin(radians(i)))
     update_canvas()
@@ -85,7 +86,10 @@ def move_triangle():
     pass
 
 while True:
-    move_circle()
+    x = 400
+    y = 300
+    r = 200
+    move_circle(x, y, r)
     move_rectangle()
     move_triangle()
     pass
