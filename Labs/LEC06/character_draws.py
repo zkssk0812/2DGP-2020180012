@@ -75,7 +75,7 @@ def draw_triangle_left_down():
     lenth = 300
     for x in range(400, 100, -5):
         lenth -= 5
-        draw_character(x, 50 + lenth * tan(radians(45)) )
+        draw_character(x, 50 + lenth * tan(radians(45)))
 
 def move_triangle():
     print('triangle')
@@ -85,8 +85,8 @@ def move_triangle():
     pass
 
 while True:
-    #move_circle()
-    #move_rectangle()
+    move_circle()
+    move_rectangle()
     move_triangle()
     pass
 
