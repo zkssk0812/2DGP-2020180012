@@ -59,6 +59,8 @@ def move_rectangle():
 
 def draw_triangle_bottom():
     print("triangle_bottom")
+    for x in range(50, 750, 5):
+        draw_character(x, 50)
 
 def draw_triangle_right_up():
     print('triangle_right_up')
@@ -75,7 +77,7 @@ def move_triangle():
 
 while True:
     #move_circle()
-    move_rectangle()
+    #move_rectangle()
     move_triangle()
     pass
 
