@@ -69,19 +69,19 @@ def draw_triangle_right_up(x, y, b ,h):
         draw_character(x, curr_y)
 
 
-def draw_triangle_left_down():
+def draw_triangle_left_down(x, y, b, h):
     print('triangle_left_down')
-    rate = 4 / 3
-    h = 400
+    rate = h / (b / 2)
+    curr_y = y + h
     for x in range(400, 100, -5):
-        h -= 5 * rate 
-        draw_character(x, 100 + h)
+        curr_y -= 5 * rate 
+        draw_character(x, curr_y)
 
 def move_triangle(x, y, b, h):
     print('triangle')
     draw_triangle_bottom(x, y, b)
     draw_triangle_right_up(x , y , b, h)
-    draw_triangle_left_down()
+    draw_triangle_left_down(x, y, b, h)
     pass
 
 while True:
