@@ -59,7 +59,7 @@ def move_rectangle():
 
 def draw_triangle_bottom():
     print("triangle_bottom")
-    for x in range(50, 750, 5):
+    for x in range(100, 700, 5):
         draw_character(x, 50)
 
 def draw_triangle_right_up():
