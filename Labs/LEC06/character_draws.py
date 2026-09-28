@@ -58,11 +58,15 @@ def move_rectangle():
     draw_right()
 
 def draw_triangle_bottom():
-    print("tringle_bottom")
+    print("triangle_bottom")
+
+def draw_triangle_right_up():
+    print('triangle_right_up')
 
 def move_triangle():
     print('triangle')
     draw_triangle_bottom()
+    draw_triangle_right_up()
     pass
 
 while True:
