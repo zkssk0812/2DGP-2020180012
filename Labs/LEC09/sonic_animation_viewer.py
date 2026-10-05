@@ -32,8 +32,9 @@ sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    handle_events()
-    draw_frame(idle[0])
-    delay(0.01)
+    for frame in idle:
+        handle_events()
+        draw_frame(frame)
+        delay(0.1)
 
 close_canvas()
