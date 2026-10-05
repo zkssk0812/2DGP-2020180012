@@ -105,7 +105,7 @@ def handle_events():
 def draw_frame(frame):
     left, bottom, w, h = frame
     clear_canvas()
-    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, CANVAS_H // 2, w * SCALE, h * SCALE)
+    sheet.clip_draw(left, bottom, w, h, char_x, CANVAS_H // 2, w * SCALE, h * SCALE)
     update_canvas()
 
 
@@ -137,6 +137,8 @@ def play_action(name, frames, speed):
 open_canvas(CANVAS_W, CANVAS_H)
 
 sheet = load_image('sonic-sprite.png')
+
+char_x = CANVAS_W // 2
 
 running = True
 while running:
