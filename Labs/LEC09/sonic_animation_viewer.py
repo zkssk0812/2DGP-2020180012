@@ -49,14 +49,18 @@ def play_animation(frames):
         wait(FRAME_TIME)
 
 
+def play_action(name, frames):
+    for _ in range(REPEAT_COUNT):
+        play_animation(frames)
+    wait(PAUSE_TIME)
+
+
 open_canvas(CANVAS_W, CANVAS_H)
 
 sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    for _ in range(REPEAT_COUNT):
-        play_animation(idle)
-    wait(PAUSE_TIME)
+    play_action('Idle', idle)
 
 close_canvas()
