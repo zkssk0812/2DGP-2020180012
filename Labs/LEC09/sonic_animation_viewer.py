@@ -5,6 +5,7 @@ SCALE = 5
 GROUND_Y = 150
 FRAME_TIME = 0.1
 REPEAT_COUNT = 5
+PAUSE_TIME = 1.0
 
 # 프레임 좌표: (left, bottom, w, h), 원점은 시트 왼쪽 아래
 idle = [
@@ -56,5 +57,6 @@ running = True
 while running:
     for _ in range(REPEAT_COUNT):
         play_animation(idle)
+    wait(PAUSE_TIME)
 
 close_canvas()
