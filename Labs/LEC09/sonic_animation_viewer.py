@@ -3,6 +3,7 @@ from pico2d import *
 CANVAS_W, CANVAS_H = 1200, 800
 SCALE = 5
 GROUND_Y = 150
+FRAME_TIME = 0.1
 
 # 프레임 좌표: (left, bottom, w, h), 원점은 시트 왼쪽 아래
 idle = [
@@ -30,6 +31,16 @@ def draw_frame(frame):
     update_canvas()
 
 
+def wait(seconds):
+    # 기다리는 동안에도 창이 응답하도록 잘게 나눠서 이벤트를 처리한다
+    step = 0.01
+    elapsed = 0.0
+    while running and elapsed < seconds:
+        handle_events()
+        delay(step)
+        elapsed += step
+
+
 open_canvas(CANVAS_W, CANVAS_H)
 
 sheet = load_image('sonic-sprite.png')
@@ -37,8 +48,7 @@ sheet = load_image('sonic-sprite.png')
 running = True
 while running:
     for frame in idle:
-        handle_events()
         draw_frame(frame)
-        delay(0.1)
+        wait(FRAME_TIME)
 
 close_canvas()
