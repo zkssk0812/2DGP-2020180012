@@ -30,9 +30,10 @@
 - **프레임 간격:** 0.1초
 - **쉬는 1초 동안:** 마지막 프레임을 화면에 그대로 둔다.
 - **확대 배율:** 5배. 시트의 프레임은 가장 큰 것이 39 × 45 픽셀로 아주 작다. 5배로 하면 최대 195 × 225가 되어 1200 × 800 화면에서 잘 보인다.
-- **그리는 위치:** 프레임마다 크기가 달라서, 가운데 정렬하면 캐릭터가 위아래로 흔들린다. 그래서 **발 위치(아래쪽)를 고정**한다.
-  - x = 600 (화면 가운데)
-  - y = 바닥선 + (h × 배율) / 2
+- **그리는 위치:** 프레임의 중심을 **화면 정중앙**에 맞춘다.
+  - x = 600 (CANVAS_W / 2)
+  - y = 400 (CANVAS_H / 2)
+  - 프레임마다 높이가 달라서 동작에 따라 발 위치가 조금씩 위아래로 달라질 수 있다.
 - **반응성:** 기다리는 동안에도 매 프레임 `handle_events()`를 불러서 창이 "응답 없음"이 되지 않게 한다. 쉬는 1초도 짧은 간격으로 나눠서 기다리며 이벤트를 처리한다.
 
 ## 3. 스프라이트 시트 분석
@@ -130,11 +131,11 @@ look_around = [
 
 ```
 sonic_animation_viewer.py
-├─ 상수          CANVAS_W, CANVAS_H, SCALE, FRAME_TIME, REPEAT_COUNT, PAUSE_TIME, GROUND_Y
+├─ 상수          CANVAS_W, CANVAS_H, SCALE, FRAME_TIME, REPEAT_COUNT, PAUSE_TIME
 ├─ 프레임 데이터   idle, crouch, walk, ... look_around (3장 좌표)
 ├─ ANIMATIONS    [('Idle', idle), ('Crouch', crouch), ..., ('Look Around', look_around)]
 ├─ handle_events()            닫기 / ESC → running = False
-├─ draw_frame(frame)          clear → clip_draw(발 위치 고정, SCALE배) → update
+├─ draw_frame(frame)          clear → clip_draw(화면 정중앙, SCALE배) → update
 ├─ wait(seconds)              짧게 나눠 delay 하면서 handle_events
 ├─ play_animation(frames)     프레임 하나씩 draw_frame + wait(FRAME_TIME)
 ├─ play_action(name, frames)  play_animation × REPEAT_COUNT → wait(PAUSE_TIME)
@@ -148,7 +149,6 @@ sonic_animation_viewer.py
 | `FRAME_TIME`             | 0.1      |
 | `REPEAT_COUNT`           | 5        |
 | `PAUSE_TIME`             | 1.0      |
-| `GROUND_Y`               | 150      |
 
 `running`이 `False`가 되면 재생 중이던 반복문들도 바로 빠져나와서 프로그램이 끝나야 한다.
 
@@ -201,7 +201,7 @@ PRE-PRD 요구에 따라 한 번에 다 작성하지 않고, 단계별로 나눠
 - [ ] `Labs/LEC09`에서 `python sonic_animation_viewer.py`로 실행된다.
 - [ ] 3장의 14개 동작이 표 순서대로, 각각 5번 반복된 뒤 1초 쉬고 다음 동작으로 넘어간다.
 - [ ] 제목, 제작자 글자, 맨 아래 단독 그림은 나오지 않는다.
-- [ ] 캐릭터가 5배로 확대되고, 프레임이 바뀌어도 발 위치가 흔들리지 않는다.
+- [ ] 캐릭터가 5배로 확대되어 화면 정중앙에 그려진다.
 - [ ] 마지막 동작 뒤에 처음부터 다시 재생된다.
 - [ ] 재생 중이든 쉬는 중이든 닫기 버튼이나 `ESC`로 바로 끝난다.
 - [ ] `LEC09-animation-viewer` 브랜치에 20개 이상의 커밋이 있고, 커밋 메시지가 모두 한글이다.
