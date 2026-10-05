@@ -1,6 +1,7 @@
 from pico2d import *
 
 CANVAS_W, CANVAS_H = 1200, 800
+SCALE = 5
 
 # 프레임 좌표: (left, bottom, w, h), 원점은 시트 왼쪽 아래
 idle = [
@@ -22,7 +23,7 @@ def handle_events():
 def draw_frame(frame):
     left, bottom, w, h = frame
     clear_canvas()
-    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, CANVAS_H // 2)
+    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, CANVAS_H // 2, w * SCALE, h * SCALE)
     update_canvas()
 
 
