@@ -2,6 +2,7 @@ from pico2d import *
 
 CANVAS_W, CANVAS_H = 1200, 800
 SCALE = 5
+GROUND_Y = 150
 
 # 프레임 좌표: (left, bottom, w, h), 원점은 시트 왼쪽 아래
 idle = [
@@ -23,7 +24,9 @@ def handle_events():
 def draw_frame(frame):
     left, bottom, w, h = frame
     clear_canvas()
-    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, CANVAS_H // 2, w * SCALE, h * SCALE)
+    # 프레임마다 높이가 달라도 발 위치가 같도록 아래쪽을 GROUND_Y에 맞춘다
+    y = GROUND_Y + h * SCALE / 2
+    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, y, w * SCALE, h * SCALE)
     update_canvas()
 
 
