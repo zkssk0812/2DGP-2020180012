@@ -66,6 +66,14 @@ push = [
     (136, 110, 32, 36), (176, 110, 33, 36), (217, 110, 33, 36), (254, 111, 33, 36),
 ]
 
+surprised = [
+    (6, 56, 34, 40), (49, 56, 34, 43),
+]
+
+look_around = [
+    (96, 59, 23, 39), (125, 59, 23, 39),
+]
+
 ANIMATIONS = [
     ('Idle', idle),
     ('Crouch', crouch),
@@ -79,6 +87,8 @@ ANIMATIONS = [
     ('Turn', turn),
     ('Hurt', hurt),
     ('Push', push),
+    ('Surprised', surprised),
+    ('Look Around', look_around),
 ]
 
 
