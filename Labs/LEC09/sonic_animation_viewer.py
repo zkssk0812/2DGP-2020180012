@@ -13,6 +13,10 @@ idle = [
     (150, 447, 30, 38), (182, 447, 29, 38), (211, 448, 29, 38), (240, 448, 29, 38),
 ]
 
+ANIMATIONS = [
+    ('Idle', idle),
+]
+
 
 def handle_events():
     global running
@@ -61,6 +65,7 @@ sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    play_action('Idle', idle)
+    for name, frames in ANIMATIONS:
+        play_action(name, frames)
 
 close_canvas()
