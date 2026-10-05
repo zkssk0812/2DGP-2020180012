@@ -42,22 +42,31 @@ attack =  [
 def Walking_Animation():
     for frame in walk:
         Draw_Character(frame)
-        delay(0.033)
+        delay(0.1)
     print('Walking')
     pass
 
 
 def Running_Animation():
+    for frame in run:
+        Draw_Character(frame)
+        delay(0.1)
     print('Running')
     pass
 
 
 def Jumping_Animation():
+    for frame in jump:
+        Draw_Character(frame)
+        delay(0.1)
     print('Jumping')
     pass
 
 
 def Attack_Animation():
+    for frame in attack:
+        Draw_Character(frame)
+        delay(0.1)
     print('Attack')
     pass
 
