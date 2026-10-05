@@ -113,12 +113,10 @@ def draw_frame(frame):
 
 def wait(seconds):
     # 기다리는 동안에도 창이 응답하도록 잘게 나눠서 이벤트를 처리한다
-    step = 0.01
-    elapsed = 0.0
-    while running and elapsed < seconds:
+    end_time = get_time() + seconds
+    while running and get_time() < end_time:
         handle_events()
-        delay(step)
-        elapsed += step
+        delay(0.01)
 
 
 def play_animation(frames):
