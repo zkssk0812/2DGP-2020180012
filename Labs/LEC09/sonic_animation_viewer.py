@@ -41,14 +41,18 @@ def wait(seconds):
         elapsed += step
 
 
+def play_animation(frames):
+    for frame in frames:
+        draw_frame(frame)
+        wait(FRAME_TIME)
+
+
 open_canvas(CANVAS_W, CANVAS_H)
 
 sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    for frame in idle:
-        draw_frame(frame)
-        wait(FRAME_TIME)
+    play_animation(idle)
 
 close_canvas()
