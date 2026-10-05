@@ -117,12 +117,25 @@ def wait(seconds):
         delay(0.01)
 
 
-def play_animation(frames):
+def move_character(frame, speed, dt):
+    global char_x
+    char_x += speed * dt
+
+
+def play_animation(frames, speed):
     for frame in frames:
         if not running:
             return
-        draw_frame(frame)
-        wait(FRAME_TIME)
+        # 프레임은 FRAME_TIME마다 바뀌지만, 위치는 그 사이에도 잘게 갱신해서 부드럽게 움직인다
+        frame_end = get_time() + FRAME_TIME
+        last_time = get_time()
+        while running and get_time() < frame_end:
+            handle_events()
+            now = get_time()
+            move_character(frame, speed, now - last_time)
+            last_time = now
+            draw_frame(frame)
+            delay(0.01)
 
 
 def play_action(name, frames, speed):
@@ -130,7 +143,7 @@ def play_action(name, frames, speed):
     for _ in range(REPEAT_COUNT):
         if not running:
             return
-        play_animation(frames)
+        play_animation(frames, speed)
     wait(PAUSE_TIME)
 
 
