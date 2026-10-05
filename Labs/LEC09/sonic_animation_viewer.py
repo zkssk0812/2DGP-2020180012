@@ -143,7 +143,9 @@ def play_animation(frames, speed):
 
 
 def play_action(name, frames, speed):
+    global char_x
     print(name)
+    char_x = CANVAS_W // 2
     for _ in range(REPEAT_COUNT):
         if not running:
             return
