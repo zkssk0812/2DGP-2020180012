@@ -1,7 +1,7 @@
 애니메이션 뷰어 기획 초안
 
 pico2d를 사용 , python 쓴다.
-단일 파일로 만든다, 이름은 Pikachu_animation_viewer.py
+단일 파일로 만든다, 이름은 Sonic_animation_viewer.py
 사용하는 이미지 sptite sheet는 sonic-sprite.png
 
 기능:
