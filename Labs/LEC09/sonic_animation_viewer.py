@@ -4,6 +4,7 @@ CANVAS_W, CANVAS_H = 1200, 800
 SCALE = 5
 GROUND_Y = 150
 FRAME_TIME = 0.1
+REPEAT_COUNT = 5
 
 # 프레임 좌표: (left, bottom, w, h), 원점은 시트 왼쪽 아래
 idle = [
@@ -53,6 +54,7 @@ sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    play_animation(idle)
+    for _ in range(REPEAT_COUNT):
+        play_animation(idle)
 
 close_canvas()
