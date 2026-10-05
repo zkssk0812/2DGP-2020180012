@@ -73,21 +73,22 @@ look_around = [
     (96, 59, 23, 39), (125, 59, 23, 39),
 ]
 
+# (이름, 프레임, 이동 속도[픽셀/초]) - 속도 0은 제자리 동작
 ANIMATIONS = [
-    ('Idle', idle),
-    ('Crouch', crouch),
-    ('Walk', walk),
-    ('Run', run),
-    ('Sprint', sprint),
-    ('Roll', roll),
-    ('Spin Dash', spin_dash),
-    ('Dash', dash),
-    ('Peel Out', peel_out),
-    ('Turn', turn),
-    ('Hurt', hurt),
-    ('Push', push),
-    ('Surprised', surprised),
-    ('Look Around', look_around),
+    ('Idle', idle, 0),
+    ('Crouch', crouch, 0),
+    ('Walk', walk, 150),
+    ('Run', run, 300),
+    ('Sprint', sprint, 450),
+    ('Roll', roll, 400),
+    ('Spin Dash', spin_dash, 600),
+    ('Dash', dash, 500),
+    ('Peel Out', peel_out, 700),
+    ('Turn', turn, 0),
+    ('Hurt', hurt, 0),
+    ('Push', push, 50),
+    ('Surprised', surprised, 0),
+    ('Look Around', look_around, 0),
 ]
 
 
@@ -124,7 +125,7 @@ def play_animation(frames):
         wait(FRAME_TIME)
 
 
-def play_action(name, frames):
+def play_action(name, frames, speed):
     print(name)
     for _ in range(REPEAT_COUNT):
         if not running:
@@ -139,9 +140,9 @@ sheet = load_image('sonic-sprite.png')
 
 running = True
 while running:
-    for name, frames in ANIMATIONS:
+    for name, frames, speed in ANIMATIONS:
         if not running:
             break
-        play_action(name, frames)
+        play_action(name, frames, speed)
 
 close_canvas()
