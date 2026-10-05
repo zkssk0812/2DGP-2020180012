@@ -130,6 +130,7 @@ def play_animation(frames):
 
 
 def play_action(name, frames):
+    print(name)
     for _ in range(REPEAT_COUNT):
         if not running:
             return
