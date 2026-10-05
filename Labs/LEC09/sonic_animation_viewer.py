@@ -120,6 +120,10 @@ def wait(seconds):
 def move_character(frame, speed, dt):
     global char_x
     char_x += speed * dt
+    # 화면 오른쪽 밖으로 완전히 나가면 왼쪽 밖에서 다시 들어온다
+    half_w = frame[2] * SCALE / 2
+    if char_x - half_w > CANVAS_W:
+        char_x = -half_w
 
 
 def play_animation(frames, speed):
