@@ -19,6 +19,13 @@ def handle_events():
             running = False
 
 
+def draw_frame(frame):
+    left, bottom, w, h = frame
+    clear_canvas()
+    sheet.clip_draw(left, bottom, w, h, CANVAS_W // 2, CANVAS_H // 2)
+    update_canvas()
+
+
 open_canvas(CANVAS_W, CANVAS_H)
 
 sheet = load_image('sonic-sprite.png')
@@ -26,9 +33,7 @@ sheet = load_image('sonic-sprite.png')
 running = True
 while running:
     handle_events()
-    clear_canvas()
-    sheet.draw(CANVAS_W // 2, CANVAS_H // 2)
-    update_canvas()
+    draw_frame(idle[0])
     delay(0.01)
 
 close_canvas()
