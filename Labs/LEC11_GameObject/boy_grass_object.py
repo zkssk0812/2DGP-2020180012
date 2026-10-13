@@ -45,6 +45,14 @@ class Zombie:
         self.image.clip_draw(self.frame * 430, 0 , 430, 519,
                              self.x, self.y, 430 // 2, 519 // 2)
 
+class Ball:
+    def __init__(self):
+        pass
+    def update(self):
+        pass
+    def draw(self):
+        pass
+
 
 def handle_events():
     global running
