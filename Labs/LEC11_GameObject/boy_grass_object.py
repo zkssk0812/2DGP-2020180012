@@ -53,6 +53,7 @@ class Ball:
             self.image = load_image('ball21x21.png')
         self.image = load_image('ball41x41.png')
         self.speed = random.randint(5, 10)
+        print('create')
     def update(self):
         pass
     def draw(self):
@@ -81,8 +82,10 @@ def reset_world():
     grass = Grass()
     world.append(grass)
     team = [Boy() for i in range(11)]
+    balls = [Ball() for i in range(20)]
     world += team
     world.append(zombie)
+    world += balls
 
 
 def update_world():
