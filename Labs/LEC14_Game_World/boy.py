@@ -5,6 +5,11 @@ from sdl2 import (SDL_KEYDOWN, SDL_KEYUP, SDLK_LEFT, SDLK_RIGHT,
                   SDLK_SPACE)
 from transitions import Machine
 
+import game_world
+from ball import Ball
+
+BALL_SPEED = 10  # 공이 한 프레임에 날아가는 거리
+
 
 class Boy:
     def __init__(self):
@@ -43,11 +48,19 @@ class Boy:
     def on_enter_RUN(self):
         self.frame = 0
 
+    def fire_ball(self):
+        # 바라보는 방향으로 공을 발사한다 - RUN 중에는 face_dir이 달리는 방향이다
+        ball = Ball(self.x, self.y, self.face_dir * BALL_SPEED)
+        game_world.add_object(ball, 1)
+        direction = '오른쪽' if self.face_dir == 1 else '왼쪽'
+        print(f'{direction}으로 축구공이 나왔다!')
+
     def handle_event(self, event):
-        if (event.type == SDL_KEYDOWN and
-                event.key == SDLK_SPACE and
-                self.state == 'SLEEP'):
-            self.wake_up()
+        if event.type == SDL_KEYDOWN and event.key == SDLK_SPACE:
+            # 자고 있었다면 먼저 깨운다. RUN 상태는 그대로 두므로 방향키를 누르고 있으면 계속 달린다
+            if self.state == 'SLEEP':
+                self.wake_up()
+            self.fire_ball()
             return
 
         if (event.type not in (SDL_KEYDOWN, SDL_KEYUP) or

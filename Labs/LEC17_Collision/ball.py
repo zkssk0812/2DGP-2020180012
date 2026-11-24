@@ -1,4 +1,4 @@
-from pico2d import get_canvas_width, load_image
+from pico2d import get_canvas_width, load_image, draw_rectangle
 
 import game_world
 import game_framework
@@ -31,10 +31,24 @@ class Ball:
         self.x += self.velocity_x * dt
         self.y += self.velocity_y * dt - 0.5 * GRAVITY * dt ** 2
         self.velocity_y -= GRAVITY * dt
-        if (self.x < -self.radius or self.x > get_canvas_width() + self.radius
-                or self.y - self.radius <= GROUND_Y):
+        # 화면 좌우 밖으로 나가면 제거 (바닥 처리는 잔디와의 충돌에서 한다)
+        if self.x < -self.radius or self.x > get_canvas_width() + self.radius:
             game_world.remove_object(self)
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())  # 디버그용 충돌 박스
+    
+    def get_bb(self):
+        return (self.x - self.radius, self.y - self.radius,
+                self.x + self.radius, self.y + self.radius)
 
+    def handle_collision(self, group, other):
+        if group == 'boy:ball':
+            if self.stopped:  # 땅에 놓인 공만 주울 수 있다
+                game_world.remove_object(self)
+        elif group == 'grass:ball':
+            if not self.stopped:  # 날아가던 공이 땅에 닿으면 땅 위에 멈춘다
+                self.stopped = True
+                self.y = other.get_bb()[3] + self.radius  # 잔디 윗면에 올려놓기
+            

@@ -144,6 +144,8 @@ class Boy:
         ball = Ball(self.x + self.face_dir * 40, self.y + 60, self.face_dir,
                     1 if self.item == 'Ball' else 2)
         game_world.add_oject(ball)
+        game_world.add_collision_pair('grass:ball', None, ball)
+        game_world.add_collision_pair('boy:ball', None, ball)
 
     def pause(self):
         self.pressed_keys.clear()
@@ -182,3 +184,11 @@ class Boy:
     def draw(self):
         self.states[self.state].draw(self)
         self.font.draw(self.x - 10, self.y + 50, f'{self.ball_count:02d}', (255, 255, 0))
+        draw_rectangle(*self.get_bb())  # 디버그용 충돌 박스
+
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+
+    def handle_collision(self, group, other):
+        if group == 'boy:ball' and other.stopped:  # 날아가는 공은 줍지 않는다
+            self.ball_count += 1
